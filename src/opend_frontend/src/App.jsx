@@ -1,30 +1,20 @@
-import { useState } from 'react';
-import { opend_backend } from 'declarations/opend_backend';
+import React from "react";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import "bootstrap/dist/css/bootstrap.min.css";
+import homeImage from "../public/home-img.png";
+import Item from "./components/Item";
 
 function App() {
-  const [greeting, setGreeting] = useState('');
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    const name = event.target.elements.name.value;
-    opend_backend.greet(name).then((greeting) => {
-      setGreeting(greeting);
-    });
-    return false;
-  }
+  const NFTID = "asrmz-lmaaa-aaaaa-qaaeq-cai";
 
   return (
-    <main>
-      <img src="/logo2.svg" alt="DFINITY logo" />
-      <br />
-      <br />
-      <form action="#" onSubmit={handleSubmit}>
-        <label htmlFor="name">Enter your name: &nbsp;</label>
-        <input id="name" alt="Name" type="text" />
-        <button type="submit">Click Me!</button>
-      </form>
-      <section id="greeting">{greeting}</section>
-    </main>
+    <div className="App">
+      <Header />
+      <Item id={NFTID} />
+      {/* <img className="bottom-space" src={homeImage} /> */}
+      <Footer />
+    </div>
   );
 }
 
