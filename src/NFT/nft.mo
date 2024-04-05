@@ -2,7 +2,7 @@ import Debug "mo:base/Debug";
 import Principal "mo:base/Principal";
 import Nat8 "mo:base/Nat8";
 
-actor class NFT (name: Text, owner: Principal, content: [Nat8]) {
+actor class NFT (name: Text, owner: Principal, content: [Nat8]) = this {
     // Debug.print("It works!"); Contract on how to create an NFT (canister) programmatically
 
     let itemName = name;
@@ -20,4 +20,8 @@ actor class NFT (name: Text, owner: Principal, content: [Nat8]) {
     public query func getAsset() : async [Nat8] {
         return imageBytes;
     };
+
+    public query func getCanisterID() : async Principal {
+        return Principal.fromActor(this);
+    }
 }
